@@ -1,0 +1,3 @@
+Pods/
+**/xcuserdata/**
+OpenTube/Application/Config/local.xcconfig

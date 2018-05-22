@@ -1,0 +1,2 @@
+#include "./local.xcconfig"
+#include "../../../Pods/Target Support Files/Pods-OpenTube/Pods-OpenTube.debug.xcconfig"

@@ -1,0 +1,85 @@
+PODS:
+  - Alamofire (4.7.2)
+  - FFCircularProgressView (0.5)
+  - PINCache (3.0.1-beta.6):
+    - PINCache/Arc-exception-safe (= 3.0.1-beta.6)
+    - PINCache/Core (= 3.0.1-beta.6)
+  - PINCache/Arc-exception-safe (3.0.1-beta.6):
+    - PINCache/Core
+  - PINCache/Core (3.0.1-beta.6):
+    - PINOperation (~> 1.1.0)
+  - PINOperation (1.1.1)
+  - PINRemoteImage/Core (3.0.0-beta.13):
+    - PINOperation
+  - PINRemoteImage/iOS (3.0.0-beta.13):
+    - PINRemoteImage/Core
+  - PINRemoteImage/PINCache (3.0.0-beta.13):
+    - PINCache (= 3.0.1-beta.6)
+    - PINRemoteImage/Core
+  - PromiseKit (6.2.7):
+    - PromiseKit/CorePromise (= 6.2.7)
+    - PromiseKit/Foundation (= 6.2.7)
+    - PromiseKit/UIKit (= 6.2.7)
+  - PromiseKit/CorePromise (6.2.7)
+  - PromiseKit/Foundation (6.2.7):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (6.2.7):
+    - PromiseKit/CorePromise
+  - Realm (3.5.0):
+    - Realm/Headers (= 3.5.0)
+  - Realm/Headers (3.5.0)
+  - RealmSwift (3.5.0):
+    - Realm (= 3.5.0)
+  - SideMenu (3.1.5)
+  - SwiftyXML (1.6.0)
+  - Texture (2.6):
+    - Texture/PINRemoteImage (= 2.6)
+  - Texture/Core (2.6)
+  - Texture/PINRemoteImage (2.6):
+    - PINRemoteImage/iOS (= 3.0.0-beta.13)
+    - PINRemoteImage/PINCache
+    - Texture/Core
+  - XCDYouTubeKit (2.5.6)
+
+DEPENDENCIES:
+  - Alamofire
+  - FFCircularProgressView
+  - PromiseKit
+  - RealmSwift
+  - SideMenu
+  - SwiftyXML
+  - Texture
+  - XCDYouTubeKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - FFCircularProgressView
+    - PINCache
+    - PINOperation
+    - PINRemoteImage
+    - PromiseKit
+    - Realm
+    - RealmSwift
+    - SideMenu
+    - SwiftyXML
+    - Texture
+    - XCDYouTubeKit
+
+SPEC CHECKSUMS:
+  Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
+  FFCircularProgressView: 683a4ab1e1bd613246a3dffa61503ffdebcde8d8
+  PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
+  PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
+  PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
+  PromiseKit: 12b9d87748b170714247d8b2677146ca57e488f2
+  Realm: 0378021c424e4e2bd6a0e63b27881e929d9b9ad1
+  RealmSwift: 3322562622fda2ad596985ead4d8d8be30cf838c
+  SideMenu: 47dbf9e4d878062d8994aed43f6e4bf6c1fea30b
+  SwiftyXML: 3cb99996220435600058c2919c19fbbafa0da253
+  Texture: 7249074582daf75e524e59df5428b66b8e8db0e4
+  XCDYouTubeKit: dccfe0c17dd5c5187969ec27e93069573badb08f
+
+PODFILE CHECKSUM: df7bfac695d96069d0f0be1f0c1eca24b00c00ca
+
+COCOAPODS: 1.5.2
