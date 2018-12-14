@@ -1,118 +1,102 @@
+
+import AVKit
+import DataModels
+import PromiseKit
+import RealmSwift
+import SwiftyXML
 import UIKit
 import UserNotifications
-import SideMenu
-import RealmSwift
-import PromiseKit
-import AVKit
-import SwiftyXML
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
-  
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+
+  private var startupCoordinator: StartupCoordinator?
+
+  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     
     let audioSession = AVAudioSession.sharedInstance()
-    try? audioSession.setCategory(AVAudioSessionCategoryPlayback)
+    try? audioSession.setCategory(.playback, mode: .default, options: .duckOthers)
     
-    self.window = UIWindow(frame: UIScreen.main.bounds)
+    VideoListModel.shared.configure()
+
+    let window = UIWindow(frame: UIScreen.main.bounds)
+    self.window = window
     
-    let vc = VideoListViewController()
-    let nav = UINavigationController(rootViewController: vc)
-    
-    window?.rootViewController = nav
-    window?.makeKeyAndVisible()
-    
-    let leftMenu = MenuViewController()
-    SideMenuManager.default.menuRightNavigationController = UISideMenuNavigationController(rootViewController: leftMenu)
-    
-    application.setMinimumBackgroundFetchInterval(Settings.backgroudFetchInterval)
-    
-    let options: UNAuthorizationOptions = [.alert, .sound]
-    UNUserNotificationCenter.current().requestAuthorization(options: options) { (granted, error) in
-    }
-    
+    startupCoordinator = StartupCoordinator(window: window)
+    startupCoordinator?.start()
+
+    application.setMinimumBackgroundFetchInterval(AppSettings.backgroudFetchInterval)
+
     return true
   }
-  
-  func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-    guard let xml = XML(url: url) else { return false }
-    guard let subscriptions = xml.children.first?.children.first?.children else { return false }
-    
-    var channelsToImport: [String] = []
-    
-    for child in subscriptions where child.name == "outline" {
-      if let channelId = child.attributes["xmlUrl"]?.substringAfter("channel_id=") {
-        channelsToImport.append(channelId)
-      }
-    }
-    
-    let alert = UIAlertController(title: "Import", message: "Would you like to import \(channelsToImport.count) subscriptions?", preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "Yes", style: .default) { _ in
-      for channelId in channelsToImport {
-        SubscribedChannel.create(with: channelId, notify: false)
-      }
-      NotificationCenter.default.post(name: Notifications.subscriptionListDidChange, object: nil)
-    })
-    alert.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
-    window?.rootViewController?.present(alert, animated: true, completion: nil)
-      
-    return true
-  }
-  
+
   func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-    let list = VideoEntryList(with: nil)
-    
-    let notifyingChannels = try! Realm().objects(SubscribedChannel.self).filter("notificationsEnabled == true").map { $0.channelId }
-    
+
     firstly {
-      list.fetchNewEntries()
-      
-    }.done { entries in
-      self.notifyFor(channelsIds: Array(notifyingChannels), entries: entries, completion: completionHandler)
-      
+      VideoListModel.shared.fetchAndSaveNewVideos()
+
+    }.filterValues { model -> Bool in
+      model.channel?.notificationsEnabled.value == true
+
+    }.then { notifyingModels -> Guarantee<[VideoModel]> in
+      self.notifyNewVideos(notifyingModels)
+
+    }.done { newVideos in
+      completionHandler(newVideos.isEmpty ? .noData : .newData)
+
     }.catch { _ in
       completionHandler(.failed)
     }
-    
+
   }
-  
-  private func notifyFor(channelsIds: [String], entries: [EntryObject], completion: @escaping (UIBackgroundFetchResult) -> Void) {
-    var newVideos: [EntryObject] = []
-    
-    for entry in entries {
-      if channelsIds.contains(entry.channelId) {
-        newVideos.append(entry)
-      }
-    }
-    
-    UNUserNotificationCenter.current().getNotificationSettings { (settings) in
-      guard settings.authorizationStatus == .authorized else {
-        return completion(newVideos.isEmpty ? .noData : .newData)
-      }
-      
-      for video in newVideos {
-        
-        let content = UNMutableNotificationContent()
-        content.title = "New Video"
-        content.body = "\(video.title)"
-        content.sound = UNNotificationSound.default()
-        
-        // TODO: Download thumbnail and add attachment
-        
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        
-        UNUserNotificationCenter.current().add(request) { (error : Error?) in
-          if let theError = error {
-            print(theError.localizedDescription)
-          }
+
+  private func notifyNewVideos(_ models: [VideoModel]) -> Guarantee<[VideoModel]> {
+
+    return Guarantee { seal in
+
+      UNUserNotificationCenter.current().getNotificationSettings { [weak self] settings in
+
+        guard settings.authorizationStatus == .authorized else {
+          return seal((models))
         }
-        
+
+        let guarantees = models.map { self?.notifyVideo($0) }.compactMap { $0 }
+        when(guarantees: guarantees).done {
+          seal(models)
+        }
       }
-      
-      completion(entries.isEmpty ? .noData : .newData)
+
+    }
+
+  }
+
+  private func notifyVideo(_ model: VideoModel) -> Guarantee<Void> {
+
+    var channelTitleSuffix: String = ""
+    if let channelName = model.channel?.channelName {
+      channelTitleSuffix = " from \(channelName)"
+    }
+    let title = "New Video\(channelTitleSuffix)"
+
+    let content = UNMutableNotificationContent()
+    content.title = title
+    content.body = "\(model.title)"
+    content.sound = UNNotificationSound.default
+
+    // TODO: Download thumbnail and add attachment
+
+    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+    let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+    return Guarantee { seal in
+
+      UNUserNotificationCenter.current().add(request) { _ in
+        seal(())
+      }
+
     }
   }
+
 }

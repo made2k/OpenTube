@@ -2,12 +2,13 @@ import UIKit
 import AsyncDisplayKit
 
 class TextNode: ASTextNode {
-  private static let defaultFont = UIFont.systemFont(ofSize: 15)
+
+  private static let defaultFont = UIFont.systemFont(ofSize: 16)
   private static let defaultFontColor = UIColor(hex: "1B1B1C")
   
-  private var customAttributes: [NSAttributedStringKey: Any] = [
-    NSAttributedStringKey.font: TextNode.defaultFont,
-    NSAttributedStringKey.foregroundColor: TextNode.defaultFontColor
+  private var customAttributes: [NSAttributedString.Key: Any] = [
+    NSAttributedString.Key.font: TextNode.defaultFont,
+    NSAttributedString.Key.foregroundColor: TextNode.defaultFontColor
   ]
   
   var font: UIFont {
