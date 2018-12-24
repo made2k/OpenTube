@@ -11,8 +11,11 @@ It uses YouTube’s RSS feeds to act as subscriptions that are saved locally on 
 * No Ads
 * PIP on supported iPad models
 * Hide videos from your subscription feed
-* Import existing subscriptions from XML ([See example](https://hookrsstube.com/index.html))
 * Mark videos as watched and unwatched
+
+## Screenshots
+
+Check the Media directory for screen shots.
 
 
 ## Building the project
@@ -60,10 +63,8 @@ Please run the setup script and follow the instructions to generate a bundle ide
 
 ### How do I add a channel to my feed?
 
-In the side menu there's an option to add a channel. Once on that view if you know the Channel ID of the channel you want to add, you can simply type it in and click "add".
-Most people don't know the channel ID though so I recomment clicking the "Search Web" button at the bottom. 
-That will open up youtube.com and you can use the search function to navigate to the channel you want to add. Once
-on that channels page, click the "Add Channel" button in the top right and the app will search that page for the channel ID and add it.
+On the browse tab, use the YouTube web interface to navigate to a channel. Once there you'll see a subscribe or unsubscribe
+button in the top right. Tapping that will subscribe to the channel and add it to your feed.
 
 ### How do I contribute?
 
@@ -71,9 +72,4 @@ Open up a PR and let me know what the changes are for.
 
 ### I encountered a bug or have feedback about the app.
 
-Open up an issue so I can investigate the probel
-
-### The icon and design suck.
-
-I know. I'm not a designer. If you have design ideas or want to contribute an icon or anything of the sort
-let me know.
+Open up an issue so I can investigate the problem

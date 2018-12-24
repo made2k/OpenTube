@@ -83,6 +83,9 @@
 		92F697C920B45EF6008CF757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92F697C820B45EF6008CF757 /* Assets.xcassets */; };
 		92F697CC20B45EF6008CF757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92F697CA20B45EF6008CF757 /* LaunchScreen.storyboard */; };
 		92F697DA20B4A6FC008CF757 /* VideoCellNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92F697D920B4A6FC008CF757 /* VideoCellNode.swift */; };
+		92FBDC7321D13D3400451003 /* videos.png in Resources */ = {isa = PBXBuildFile; fileRef = 92FBDC7021D13D3400451003 /* videos.png */; };
+		92FBDC7421D13D3400451003 /* home.png in Resources */ = {isa = PBXBuildFile; fileRef = 92FBDC7121D13D3400451003 /* home.png */; };
+		92FBDC7521D13D3400451003 /* browse.png in Resources */ = {isa = PBXBuildFile; fileRef = 92FBDC7221D13D3400451003 /* browse.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,6 +202,9 @@
 		92F697CD20B45EF6008CF757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		92F697D520B49E58008CF757 /* VideoModel.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = VideoModel.swift; sourceTree = "<group>"; tabWidth = 2; };
 		92F697D920B4A6FC008CF757 /* VideoCellNode.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = VideoCellNode.swift; sourceTree = "<group>"; tabWidth = 2; };
+		92FBDC7021D13D3400451003 /* videos.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = videos.png; sourceTree = "<group>"; };
+		92FBDC7121D13D3400451003 /* home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = home.png; sourceTree = "<group>"; };
+		92FBDC7221D13D3400451003 /* browse.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = browse.png; sourceTree = "<group>"; };
 		9EBAF82CB5D0543548AA0A9D /* Pods-Network.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Network.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Network/Pods-Network.debug.xcconfig"; sourceTree = "<group>"; };
 		A22A507B8F948C497687743D /* Pods-DataModels.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DataModels.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DataModels/Pods-DataModels.debug.xcconfig"; sourceTree = "<group>"; };
 		A26FEB11633865F76CBCB529 /* Pods_Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -641,8 +647,9 @@
 			isa = PBXGroup;
 			children = (
 				923F854F20B9BA6E00741242 /* README.md */,
-				92F697C020B45EF5008CF757 /* OpenTube */,
 				92B2B44221C459F000F1D944 /* DataModels */,
+				92FBDC6921D13BE700451003 /* Media */,
+				92F697C020B45EF5008CF757 /* OpenTube */,
 				92B2B45E21C45D0300F1D944 /* Utilities */,
 				92F697BF20B45EF5008CF757 /* Products */,
 				AC596F26CD97D18FE42A363D /* Pods */,
@@ -674,6 +681,16 @@
 				92EA339F20B4BFC000D78FC2 /* UX */,
 			);
 			path = OpenTube;
+			sourceTree = "<group>";
+		};
+		92FBDC6921D13BE700451003 /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				92FBDC7221D13D3400451003 /* browse.png */,
+				92FBDC7121D13D3400451003 /* home.png */,
+				92FBDC7021D13D3400451003 /* videos.png */,
+			);
+			path = Media;
 			sourceTree = "<group>";
 		};
 		AC596F26CD97D18FE42A363D /* Pods */ = {
@@ -836,9 +853,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				92FBDC7521D13D3400451003 /* browse.png in Resources */,
 				92F697CC20B45EF6008CF757 /* LaunchScreen.storyboard in Resources */,
 				923F855020B9BA6E00741242 /* README.md in Resources */,
+				92FBDC7421D13D3400451003 /* home.png in Resources */,
 				923F855320B9C3AE00741242 /* Settings.storyboard in Resources */,
+				92FBDC7321D13D3400451003 /* videos.png in Resources */,
 				92F697C920B45EF6008CF757 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
