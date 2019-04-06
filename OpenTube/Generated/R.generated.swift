@@ -30,8 +30,12 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 9 images.
   struct image {
+    /// Image `browse`.
+    static let browse = Rswift.ImageResource(bundle: R.hostingBundle, name: "browse")
+    /// Image `home`.
+    static let home = Rswift.ImageResource(bundle: R.hostingBundle, name: "home")
     /// Image `ic_notification_disabled`.
     static let ic_notification_disabled = Rswift.ImageResource(bundle: R.hostingBundle, name: "ic_notification_disabled")
     /// Image `ic_notification_enabled`.
@@ -44,6 +48,18 @@ struct R: Rswift.Validatable {
     static let tabSettings = Rswift.ImageResource(bundle: R.hostingBundle, name: "tab-settings")
     /// Image `tab-videos`.
     static let tabVideos = Rswift.ImageResource(bundle: R.hostingBundle, name: "tab-videos")
+    /// Image `videos`.
+    static let videos = Rswift.ImageResource(bundle: R.hostingBundle, name: "videos")
+    
+    /// `UIImage(named: "browse", bundle: ..., traitCollection: ...)`
+    static func browse(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.browse, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "home", bundle: ..., traitCollection: ...)`
+    static func home(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.home, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "ic_notification_disabled", bundle: ..., traitCollection: ...)`
     static func ic_notification_disabled(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -73,6 +89,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "tab-videos", bundle: ..., traitCollection: ...)`
     static func tabVideos(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.tabVideos, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "videos", bundle: ..., traitCollection: ...)`
+    static func videos(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.videos, compatibleWith: traitCollection)
     }
     
     fileprivate init() {}
