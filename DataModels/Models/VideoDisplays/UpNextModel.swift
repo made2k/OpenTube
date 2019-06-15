@@ -53,8 +53,8 @@ public final class UpNextModel: NSObject {
       // Here we're observing the state of watched and if a video changed to in progress
       // so that we can reload our up next list. Up next is based on watched and progress.
       Observable.combineLatest(video.inProgress.asObservable(),
-                               video.isWatched.asObservable()) { ($0, $1) }
-        .distinctUntilChanged { (first, second) -> Bool in
+                                            video.isWatched.asObservable()) { ($0, $1) }
+        .distinctUntilChanged { (first: (Bool, Bool), second: (Bool, Bool)) -> Bool in
           return first.0 == second.0 && first.1 == second.1
         }
         .skip(1)
@@ -63,10 +63,8 @@ public final class UpNextModel: NSObject {
           let allVideos = VideoListModel.shared.videoList.value
           return self.mapVideoList(allVideos)
 
-        }.subscribe(onNext: { [unowned self] in
-          self.videoList.accept($0)
-
-        }).disposed(by: videoTrackerDisposeBag)
+        }.bind(to: videoList)
+        .disposed(by: videoTrackerDisposeBag)
 
     }
   }

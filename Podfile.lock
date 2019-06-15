@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (4.8.0)
+  - Alamofire (4.8.2)
   - FFCircularProgressView (0.5)
   - MBProgressHUD (1.1.0)
   - PINCache (3.0.1-beta.6):
@@ -17,45 +17,56 @@ PODS:
   - PINRemoteImage/PINCache (3.0.0-beta.13):
     - PINCache (= 3.0.1-beta.6)
     - PINRemoteImage/Core
-  - PromiseKit (6.7.0):
-    - PromiseKit/CorePromise (= 6.7.0)
-    - PromiseKit/Foundation (= 6.7.0)
-    - PromiseKit/UIKit (= 6.7.0)
-  - PromiseKit/Alamofire (6.7.0):
+  - PromiseKit (6.8.3):
+    - PromiseKit/CorePromise (= 6.8.3)
+    - PromiseKit/Foundation (= 6.8.3)
+    - PromiseKit/UIKit (= 6.8.3)
+  - PromiseKit/Alamofire (6.8.3):
     - Alamofire (~> 4.0)
     - PromiseKit/CorePromise
-  - PromiseKit/CorePromise (6.7.0)
-  - PromiseKit/Foundation (6.7.0):
+  - PromiseKit/CorePromise (6.8.3)
+  - PromiseKit/Foundation (6.8.3):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (6.7.0):
+  - PromiseKit/UIKit (6.8.3):
     - PromiseKit/CorePromise
-  - R.swift (5.0.0):
+  - R.swift (5.0.3):
     - R.swift.Library (~> 5.0.0)
-  - R.swift.Library (5.0.0)
-  - Realm (3.12.0):
-    - Realm/Headers (= 3.12.0)
-  - Realm/Headers (3.12.0)
-  - RealmSwift (3.12.0):
-    - Realm (= 3.12.0)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
+  - R.swift.Library (5.0.1)
+  - Realm (3.14.1):
+    - Realm/Headers (= 3.14.1)
+  - Realm/Headers (3.14.1)
+  - RealmSwift (3.14.1):
+    - Realm (= 3.14.1)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
   - RxOptional (3.6.2):
     - RxCocoa (~> 4.0)
     - RxSwift (~> 4.0)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
+  - RxSwift (4.5.0)
   - SnapKit (4.2.0)
-  - SwiftyXML (1.7.0)
-  - Texture (2.7):
-    - Texture/PINRemoteImage (= 2.7)
-  - Texture/Core (2.7)
-  - Texture/PINRemoteImage (2.7):
+  - SwiftyXML (2.0.0)
+  - Texture (2.8):
+    - Texture/AssetsLibrary (= 2.8)
+    - Texture/Core (= 2.8)
+    - Texture/MapKit (= 2.8)
+    - Texture/Photos (= 2.8)
+    - Texture/PINRemoteImage (= 2.8)
+    - Texture/Video (= 2.8)
+  - Texture/AssetsLibrary (2.8):
+    - Texture/Core
+  - Texture/Core (2.8)
+  - Texture/MapKit (2.8):
+    - Texture/Core
+  - Texture/Photos (2.8):
+    - Texture/Core
+  - Texture/PINRemoteImage (2.8):
     - PINRemoteImage/iOS (= 3.0.0-beta.13)
     - PINRemoteImage/PINCache
     - Texture/Core
+  - Texture/Video (2.8):
+    - Texture/Core
   - Then (2.4.0)
-  - XCDYouTubeKit (2.7.1)
+  - XCDYouTubeKit (2.7.3)
 
 DEPENDENCIES:
   - Alamofire
@@ -87,7 +98,6 @@ SPEC REPOS:
     - R.swift.Library
     - Realm
     - RealmSwift
-    - RxAtomic
     - RxCocoa
     - RxOptional
     - RxSwift
@@ -98,27 +108,26 @@ SPEC REPOS:
     - XCDYouTubeKit
 
 SPEC CHECKSUMS:
-  Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   FFCircularProgressView: 683a4ab1e1bd613246a3dffa61503ffdebcde8d8
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   PINCache: d195fdba255283f7e9900a55e3cced377f431f9b
   PINOperation: a6219e6fc9db9c269eb7a7b871ac193bcf400aac
   PINRemoteImage: d6d51c5d2adda55f1ce30c96e850b6c4ebd2856a
-  PromiseKit: 453ddcc947fe7b302f3ef41882b81d31c554df7f
-  R.swift: f88c7d7d48a2be4dffa132dde1b3d389620310eb
-  R.swift.Library: 0bf390e729bc10bb2c9e4fb78bd043164a7be4ff
-  Realm: cdaef23c4ddb36ab1ddffed23f5a7f3332fc5585
-  RealmSwift: 5576324033f0aa5ef1e0a839a3da2281dff47a7f
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  PromiseKit: 94c6e781838c5bf4717677d0d882b0e7250c80fc
+  R.swift: f5a87643b91ea569d23d6afb3eee9c743edde239
+  R.swift.Library: cfe85d569d9bae6cb262922db130e7c3a7a5fad1
+  Realm: e12c9c2387d05c5bba3a9c394838f5870e85763b
+  RealmSwift: a82eab9b04c3e1616082c7e17aa300740847769c
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
   RxOptional: 80426a0ddbd092573e4c482d8cc13302078c4d5e
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
-  SwiftyXML: 7ed8a99cbdb3b6dbc270a48ae0064d792f5daaa2
-  Texture: 9d7e38965cf22ccd7cd9c249dd78b3f14e70ab6c
+  SwiftyXML: 332cbc28563e25303879777375dfbbd746b5ad2a
+  Texture: fc6e0157201f3a6e503d364c147b1872e365cef4
   Then: 71866660c7af35a7343831f7668e7cd2b62ee0f2
-  XCDYouTubeKit: c8567fd5cb388a3099fa26eee4b30df2a467847d
+  XCDYouTubeKit: 3f4fd3eb3ed494a46a8f007b91315eed6dd6df1f
 
 PODFILE CHECKSUM: 922b6c9e9b86ec5f57c9d56448b31a314a45bb04
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

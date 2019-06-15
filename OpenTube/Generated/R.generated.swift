@@ -16,14 +16,38 @@ struct R: Rswift.Validatable {
     try intern.validate()
   }
   
-  /// This `R.file` struct is generated, and contains static references to 1 files.
+  /// This `R.file` struct is generated, and contains static references to 4 files.
   struct file {
     /// Resource file `README.md`.
     static let readmeMd = Rswift.FileResource(bundle: R.hostingBundle, name: "README", pathExtension: "md")
+    /// Resource file `browse.png`.
+    static let browsePng = Rswift.FileResource(bundle: R.hostingBundle, name: "browse", pathExtension: "png")
+    /// Resource file `home.png`.
+    static let homePng = Rswift.FileResource(bundle: R.hostingBundle, name: "home", pathExtension: "png")
+    /// Resource file `videos.png`.
+    static let videosPng = Rswift.FileResource(bundle: R.hostingBundle, name: "videos", pathExtension: "png")
     
     /// `bundle.url(forResource: "README", withExtension: "md")`
     static func readmeMd(_: Void = ()) -> Foundation.URL? {
       let fileResource = R.file.readmeMd
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "browse", withExtension: "png")`
+    static func browsePng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.browsePng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "home", withExtension: "png")`
+    static func homePng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.homePng
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "videos", withExtension: "png")`
+    static func videosPng(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.videosPng
       return fileResource.bundle.url(forResource: fileResource)
     }
     
